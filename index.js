@@ -4,6 +4,8 @@ const cors = require('cors');
 const axios = require("axios");
 require('dotenv').config()
 
+const PORT = process.env.PORT || 8080
+
 // OpenAI API set up
 const apiUrl = "https://api.openai.com/v1/engines/text-curie-001/completions";
 const key = process.env.OPENAI_API_KEY
@@ -44,7 +46,11 @@ app.post('/generate', (req, res) => {
         })
 })
 
+// Test route
+app.get('/', (_req, res) => {
+    res.send('server is running')
+})
 
-app.listen(8080, () => {
-    console.log("Server is listening on port 8080");
+app.listen(PORT, () => {
+    console.log(`Server is listening on port ${PORT}`);
 });
